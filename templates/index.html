@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA Alignment Tool</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>DNA Sequence Alignment Tool</h1>
+        <form method="POST">
+            <label for="seq1">Sequence 1:</label>
+            <input type="text" id="seq1" name="seq1" required>
+            <label for="seq2">Sequence 2:</label>
+            <input type="text" id="seq2" name="seq2" required>
+            <button type="submit">Align</button>
+        </form>
+        {% if result %}
+            {% if result == "Error: Sequences must only contain the characters A, C, G, and T." %}
+                <div class="error">{{ result }}</div>
+            {% else %}
+                <div class="output">
+                    <p><strong>Alignment Result:</strong></p>
+                    <pre>{{ result.align1 }}</pre>
+                    <pre>{{ result.align2 }}</pre>
+                    <p><strong>Score:</strong> {{ result.score }}</p>
+                    <p><strong>Alignment Length:</strong> {{ result.alignment_length }}</p>
+                    <p><strong>Identity:</strong> {{ result.identity }}</p>
+                    <p><strong>Similarity:</strong> {{ result.similarity }}</p>
+                    <p><strong>Gaps:</strong> {{ result.gaps }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>

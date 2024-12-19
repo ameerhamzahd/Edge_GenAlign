@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: GenAlign
+Version: 1.0.0
+Summary: DNA Sequence Alignment Tool
+Home-page: https://github.com/ameerhamzahd/Edge_GenAlign.git
+Author: Ameer Hamzah Daiyan
+Author-email: ameerhamzah.daiyan@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Framework :: Flask
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Requires-Dist: flask

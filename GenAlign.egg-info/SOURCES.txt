@@ -1,0 +1,6 @@
+setup.py
+GenAlign.egg-info/PKG-INFO
+GenAlign.egg-info/SOURCES.txt
+GenAlign.egg-info/dependency_links.txt
+GenAlign.egg-info/requires.txt
+GenAlign.egg-info/top_level.txt
