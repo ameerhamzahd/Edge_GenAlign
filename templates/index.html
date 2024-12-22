@@ -3,35 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNA Alignment Tool</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <title>GenAlign: DNA Sequence Alignment Tool</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h1>DNA Sequence Alignment Tool</h1>
-        <form method="POST">
-            <label for="seq1">Sequence 1:</label>
-            <input type="text" id="seq1" name="seq1" required>
-            <label for="seq2">Sequence 2:</label>
-            <input type="text" id="seq2" name="seq2" required>
-            <button type="submit">Align</button>
-        </form>
-        {% if result %}
-            {% if result == "Error: Sequences must only contain the characters A, C, G, and T." %}
-                <div class="error">{{ result }}</div>
-            {% else %}
-                <div class="output">
-                    <p><strong>Alignment Result:</strong></p>
-                    <pre>{{ result.align1 }}</pre>
-                    <pre>{{ result.align2 }}</pre>
-                    <p><strong>Score:</strong> {{ result.score }}</p>
-                    <p><strong>Alignment Length:</strong> {{ result.alignment_length }}</p>
-                    <p><strong>Identity:</strong> {{ result.identity }}</p>
-                    <p><strong>Similarity:</strong> {{ result.similarity }}</p>
-                    <p><strong>Gaps:</strong> {{ result.gaps }}</p>
+<body class="bg-gradient-to-b from-blue-50 to-blue-100 text-gray-800 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white py-4 shadow-lg">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold tracking-wide animate-pulse">GenAlign</h1>
+            <p class="hidden sm:block text-sm">Your DNA Alignment Assistant</p>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 mt-12">
+        <!-- Header -->
+        <div class="text-center mb-8 fade-in">
+            <h1 class="text-5xl font-extrabold text-gray-900 drop-shadow-md">GenAlign</h1>
+            <p class="text-lg text-gray-600 mt-3">Efficient DNA Sequence Alignment at Your Fingertips</p>
+        </div>
+
+        <!-- Input Form -->
+        <div class="bg-white shadow-lg rounded-lg p-6 slide-in">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">Input DNA Sequences</h2>
+            <form method="POST" class="space-y-6">
+                <div>
+                    <label for="seq1" class="block text-sm font-medium text-gray-700">Sequence 1</label>
+                    <input type="text" id="seq1" name="seq1" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-900" placeholder="Enter DNA sequence (A, C, G, T)" required>
                 </div>
-            {% endif %}
+                <div>
+                    <label for="seq2" class="block text-sm font-medium text-gray-700">Sequence 2</label>
+                    <input type="text" id="seq2" name="seq2" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-900" placeholder="Enter DNA sequence (A, C, G, T)" required>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-2 px-4 rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-200 ease-out">
+                    Align Sequences
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        {% if result %}
+            <div class="mt-10 fade-in">
+                {% if result == "Error: Sequences must only contain the characters A, C, G, and T." %}
+                    <div class="bg-red-100 text-red-700 p-4 rounded-lg text-center shadow-md">
+                        {{ result }}
+                    </div>
+                {% else %}
+                    <div class="bg-white shadow-lg rounded-lg p-6 slide-in">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-4">Alignment Results</h2>
+                        <div class="mt-4">
+                            <p class="text-sm font-medium text-gray-700">Aligned Sequences:</p>
+                            <pre class="bg-gray-100 text-green-700 p-3 rounded-md font-mono">{{ result.align1 }}</pre>
+                            <pre class="bg-gray-100 text-red-700 p-3 rounded-md font-mono">{{ result.align2 }}</pre>
+                        </div>
+                        <div class="mt-4 border-t pt-4 space-y-2">
+                            <p><span class="font-medium text-gray-700">Score:</span> {{ result.score }}</p>
+                            <p><span class="font-medium text-gray-700">Alignment Length:</span> {{ result.alignment_length }}</p>
+                            <p><span class="font-medium text-gray-700">Identity:</span> {{ result.identity }}</p>
+                            <p><span class="font-medium text-gray-700">Similarity:</span> {{ result.similarity }}</p>
+                            <p><span class="font-medium text-gray-700">Gaps:</span> {{ result.gaps }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
         {% endif %}
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white text-center py-6 mt-12 fade-in">
+        <p class="text-sm">&copy; 2024 GenAlign. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>

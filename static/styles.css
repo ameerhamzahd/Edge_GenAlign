@@ -1,63 +1,40 @@
+/* Custom Animations */
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animation Classes */
+.slide-in {
+    animation: slide-in 0.8s ease-out;
+}
+
+.fade-in {
+    animation: fade-in 1s ease-in-out;
+}
+
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    font-family: 'Inter', sans-serif;
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-h1 {
-    text-align: center;
-    color: #4CAF50;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin: 10px 0 5px;
-}
-
-input {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    padding: 10px;
-    background: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #45a049;
-}
-
-.output {
-    margin-top: 20px;
-    background: #f9f9f9;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.error {
-    color: red;
-    margin-top: 20px;
+footer {
+    background-color: #2563eb; /* Tailwind Blue-600 */
+    color: white;
+    font-size: 0.875rem;
 }
